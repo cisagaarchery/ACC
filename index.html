@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archery Cisaga Club (ACC)</title>
+<!-- Menghubungkan ke file CSS eksternal -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigasi -->
+<header>
+<div class="logo">🎯 ACC CISAGA</div>
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">Tentang Kami</a></li>
+<li><a href="#gallery">Galeri</a></li>
+<li><a href="#programs">Program</a></li>
+<li><a href="#contact">Kontak</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- Halaman Utama (Hero) -->
+<div id="home" class="hero fade-in">
+<h1>Archery Cisaga Club</h1>
+<p>Fokus, Tenang, Tepat Sasaran. Bergabunglah bersama kami untuk mengasah kemampuan memanah Anda dari tingkat dasar hingga prestasi.</p>
+<a href="#contact" class="btn pulse">Daftar Sekarang</a>
+</div>
+
+<!-- Tentang Kami -->
+<section id="about" class="scroll-anim">
+<h2 class="section-title">Tentang ACC</h2>
+<div class="about-content">
+<div class="about-text">
+<h3>Membangun Karakter Melalui Panahan</h3>
+<p>Archery Cisaga Club (ACC) adalah wadah olahraga panahan resmi di wilayah Cisaga dan sekitarnya. Kami berkomitmen untuk memasyarakatkan olahraga panahan serta mencetak atlet-atlet berbakat yang berintegritas, disiplin, dan berprestasi.</p>
+<br>
+<p>Kami menyediakan fasilitas latihan yang aman, peralatan standar nasional, serta dibimbing oleh pelatih berpengalaman.</p>
+</div>
+<div class="about-image">
+<img src="https://unsplash.com" alt="Latihan Panahan ACC">
+</div>
+</div>
+</section>
+
+<!-- Galeri Foto Prestasi & Kegiatan -->
+<section id="gallery" class="bg-alt scroll-anim">
+<h2 class="section-title">Galeri Kegiatan & Prestasi</h2>
+<div class="gallery-grid">
+<div class="gallery-item">
+<img src="https://unsplash.com" alt="Latihan Bersama">
+<div class="gallery-overlay">
+<p>Latihan Rutin Mingguan</p>
+</div>
+</div>
+<div class="gallery-item">
+<img src="https://unsplash.com" alt="Turnamen Panahan">
+<div class="gallery-overlay">
+<p>Kejuaraan Daerah Ciamis</p>
+</div>
+</div>
+<div class="gallery-item">
+<img src="https://unsplash.com" alt="Pemberian Medali">
+<div class="gallery-overlay">
+<p>Podium Juara ACC</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Program Latihan -->
+<section id="programs" class="scroll-anim">
+<h2 class="section-title">Program Latihan</h2>
+<div class="programs-grid">
+<div class="program-card">
+<h3>Pemula (Beginner)</h3>
+<p>Khusus untuk yang baru memulai. Fokus pada teknik dasar penarikan busur, pengenalan alat, dan prosedur keselamatan (*safety rules*).</p>
+</div>
+<div class="program-card">
+<h3>Prestasi (Athlete)</h3>
+<p>Program latihan intensif untuk mempersiapkan para anggota mengikuti berbagai kompetisi atau turnamen resmi tingkat daerah maupun nasional.</p>
+</div>
+<div class="program-card">
+<h3>Umum / Ekstrakurikuler</h3>
+<p>Sesi fleksibel dan menyenangkan yang cocok untuk menjaga kebugaran, melatih fokus mental, maupun kegiatan komunitas.</p>
+</div>
+</div>
+</section>
+
+<!-- Kontak & Lokasi -->
+<section id="contact" class="bg-alt scroll-anim">
+<h2 class="section-title">Hubungi & Lokasi Kami</h2>
+<div class="contact-container">
+<div class="contact-info">
+<h3>Informasi Klub</h3>
+<p><strong>Alamat:</strong> Lapangan Latihan ACC, Kec. Cisaga, Kab. Ciamis, Jawa Barat</p>
+<p><strong>WhatsApp:</strong> +62 812-3456-7890</p>
+<p><strong>Email:</strong> info@archerycisagaclub.com</p>
+<p><strong>Jadwal Latihan:</strong> Sabtu & Minggu (08.00 - 11.00 WIB)</p>
+
+<!-- Peta Lokasi Sederhana -->
+<div class="map-placeholder">
+<p>🗺️ Lapangan Latihan ACC - Cisaga</p>
+</div>
+</div>
+<div>
+<form class="contact-form" onsubmit="event.preventDefault(); alert('Terima kasih! Pesan pendaftaran Anda telah diterima. Pengurus ACC akan segera menghubungi Anda.');">
+<div class="form-group">
+<label for="name">Nama Lengkap</label>
+<input type="text" id="name" required placeholder="Masukkan nama Anda">
+</div>
+<div class="form-group">
+<label for="phone">Nomor WhatsApp</label>
+<input type="tel" id="phone" required placeholder="Contoh: 08123456789">
+</div>
+<div class="form-group">
+<label for="message">Pesan / Pertanyaan</label>
+<textarea id="message" rows="4" required placeholder="Tuliskan alasan bergabung atau pertanyaan Anda..."></textarea>
+</div>
+<button type="submit" class="btn btn-submit">Kirim Pendaftaran</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<p>&copy; 2026 Archery Cisaga Club (ACC). Hak Cipta Dilindungi.</p>
+</footer>
+
+</body>
+</html>
