@@ -1,2 +1,0 @@
-# ACC
-Archery Cisaga
