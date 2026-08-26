@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Skoring Panahan Pro</h1>
+        <h1>Skoring Panahan</h1>
 
         <!-- 1. Fitur Timer Menembak -->
         <div class="timer-section">
@@ -49,7 +49,7 @@
 
         <!-- Opsi Jumlah Anak Panah per Rambahan -->
         <div class="end-settings">
-            <label>Anak panah per Rambahan (End):</label>
+            <label>Anak panah/Rambahan:</label>
             <select id="arrows-per-end" onchange="resetScore()">
                 <option value="3">3 Anak Panah</option>
                 <option value="6" selected>6 Anak Panah</option>
@@ -72,18 +72,13 @@
             <button class="btn-score btn-m" onclick="addArrow('M', 0)">M</button>
         </div>
 
-        <!-- Fitur Tambahan: Grafik Perkembangan -->
-        <div class="chart-section">
-            <h3>Grafik Perkembangan Skor</h3>
-            <canvas id="scoreChart"></canvas>
-        </div>
+        
 
         <!-- 4. Struktur Catatan Per Rambahan (Ends) -->
         <div class="history-section">
             <div class="history-header">
-                <h3>Riwayat Rambahan</h3>
+                <h3>Rambahan</h3>
                 <div>
-                    <button class="btn-control btn-export" onclick="exportToExcel()">Ekspor Excel</button>
                     <button class="btn-control" onclick="undoArrow()">Undo</button>
                     <button class="btn-control btn-clear" onclick="resetScore()">Reset Semua</button>
                 </div>
