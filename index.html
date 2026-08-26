@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Skoring Panahan Premium</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #1a252f;
+            margin-top: 0;
+            font-size: 24px;
+        }
+        
+        /* Timer Style */
+        .timer-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .timer-display {
+            font-size: 36px;
+            font-weight: bold;
+            font-family: monospace;
+            margin: 5px 0;
+        }
+        .timer-controls button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 3px;
+            font-weight: bold;
+        }
+        .timer-controls button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Dashboard Skor */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .stat-card {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .stat-value {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* Tombol Poin */
+        .target-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .btn-score {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px;
+            border: 2px solid rgba(0,0,0,0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .btn-score:active { transform: scale(0.95); }
+        .btn-x, .btn-10 { background-color: #ffd54f; color: #000; }
+        .btn-9 { background-color: #fff59d; color: #000; }
+        .btn-8, .btn-7 { background-color: #ef5350; color: #fff; }
+        .btn-6, .btn-5 { background-color: #42a5f5; color: #fff; }
+        .btn-4, .btn-3 { background-color: #424242; color: #fff; }
+        .btn-2, .btn-1 { background-color: #f5f5f5; color: #000; border: 2px solid #ddd; }
+        .btn-m { background-color: #b0bec5; color: #fff; }
+
+        /* Pengaturan Rambahan */
+        .end-settings {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f2f6;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .end-settings select {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        /* Riwayat Per Rambahan */
+        .history-section {
+            margin-top: 20px;
+        }
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 8px;
+        }
+        .btn-control {
+            background-color: #e2e8f0;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-clear { background-color: #fc5c65; color: #fff; }
+        
+        .end-row {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .end-title {
+            font-weight: bold;
+            color: #34495e;
+            min-width: 60px;
+        }
+        .end-arrows {
+            display: flex;
+            gap: 5px;
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+        .arrow-badge {
+            background: #dfe4ea;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .end-total {
+            font-weight: bold;
+            color: #2f3542;
+            background: #ced6e0;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Skoring Panahan Pro</h1>
+
+    <!-- 1. Fitur Timer Menembak -->
+    <div class="timer-section">
+        <div class="timer-controls">
+            Waktu: 
+            <button onclick="setTimer(120)">2 Menit</button>
+            <button onclick="setTimer(240)">4 Menit</button>
+        </div>
+        <div class="timer-display" id="timer-display">02:00</div>
+        <div class="timer-controls">
+            <button id="btn-start" onclick="toggleTimer()" style="background: #2ed573;">Mulai</button>
+            <button onclick="resetTimer()" style="background: #ea2027;">Reset Waktu</button>
+        </div>
+    </div>
+
+    <!-- 2. Dashboard Poin Utama -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value" id="total-score">0</div>
+            <div class="stat-label">Total</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="current-end-num">1</div>
+            <div class="stat-label">Rambahan</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="count-10">0</div>
+            <div class="stat-label">10+X</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="count-x">0</div>
+            <div class="stat-label">X</div>
+        </div>
+    </div>
+
+    <!-- Opsi Jumlah Anak Panah per Rambahan -->
+    <div class="end-settings">
+        <label>Anak panah per Rambahan (End):</label>
+        <select id="arrows-per-end" onchange="resetScore()">
+            <option value="3">3 Anak Panah</option>
+            <option value="6" selected>6 Anak Panah</option>
+        </select>
+    </div>
+
+    <!-- 3. Tombol Input Skor -->
+    <div class="target-buttons">
+        <button class="btn-score btn-x" onclick="addArrow('X', 10)">X</button>
+        <button class="btn-score btn-10" onclick="addArrow('10', 10)">10</button>
+        <button class="btn-score btn-9" onclick="addArrow('9', 9)">9</button>
+        <button class="btn-score btn-8" onclick="addArrow('8', 8)">8</button>
+        <button class="btn-score btn-7" onclick="addArrow('7', 7)">7</button>
+        <button class="btn-score btn-6" onclick="addArrow('6', 6)">6</button>
+        <button class="btn-score btn-5" onclick="addArrow('5', 5)">5</button>
+        <button class="btn-score btn-4" onclick="addArrow('4', 4)">4</button>
+        <button class="btn-score btn-3" onclick="addArrow('3', 3)">3</button>
+        <button class="btn-score btn-2" onclick="addArrow('2', 2)">2</button>
+        <button class="btn-score btn-1" onclick="addArrow('1', 1)">1</button>
+        <button class="btn-score btn-m" onclick="addArrow('M', 0)">M</button>
+    </div>
+
+    <!-- 4. Struktur Catatan Per Rambahan (Ends) -->
+    <div class="history-section">
+        <div class="history-header">
+            <h3>Riwayat Rambahan</h3>
+            <div>
+                <button class="btn-control" onclick="undoArrow()">Undo</button>
+                <button class="btn-control btn-clear" onclick="resetScore()">Reset Semua</button>
+            </div>
+        </div>
+        <div id="ends-container">
+            <!-- Data per rambahan dimasukkan via JavaScript -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // Variabel Skor & Rambahan
+    let historyEnds = []; 
+    let currentEndArrows = [];
+    
+    // Variabel Timer
+    let timerDuration = 120; 
+    let timerSeconds = 120;
+    let timerInterval = null;
+
+    // --- LOGIKA SKOR & RAMBAHAN ---
+    function getArrowsLimit() {
+        return parseInt(document.getElementById('arrows-per-end').value);
+    }
+
+    function addArrow(label, value) {
+        const limit = getArrowsLimit();
+        
+        if (currentEndArrows.length < limit) {
+            currentEndArrows.push({ label: label, value: value });
+            
+            // Jika rambahan penuh, langsung kunci dan masukkan ke riwayat rambahan
+            if (currentEndArrows.length === limit) {
+                historyEnds.push([...currentEndArrows]);
+                currentEndArrows = [];
+            }
+            updateUI();
+        }
+    }
+
+    function undoArrow() {
+        if (currentEndArrows.length > 0) {
+            currentEndArrows.pop();
+        } else if (historyEnds.length > 0) {
+            // Mengambil kembali rambahan terakhir jika rambahan aktif kosong
+            currentEndArrows = historyEnds.pop();
+            currentEndArrows.pop();
+        }
+        updateUI();
+    }
+
