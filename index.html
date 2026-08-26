@@ -68,21 +68,13 @@
             <button class="btn-score btn-3" onclick="addArrow('3', 3)">3</button>
             <button class="btn-score btn-2" onclick="addArrow('2', 2)">2</button>
             <button class="btn-score btn-1" onclick="addArrow('1', 1)">1</button>
-            <button class="btn-score btn-m" onclick="addArrow('M', 0)">M</button>
+            <button class="btn-score btn-m" onclick="addArrow('x', 0)">x</button>
         </div>
-
-        <!-- Fitur Tambahan: Grafik Perkembangan -->
-        <div class="chart-section">
-            <h3>Grafik Perkembangan Skor</h3>
-            <canvas id="scoreChart"></canvas>
-        </div>
-
         <!-- 4. Struktur Catatan Per Rambahan (Ends) -->
         <div class="history-section">
             <div class="history-header">
-                <h3>Riwayat Rambahan</h3>
+                <h3>Rambahan</h3>
                 <div>
-                    <button class="btn-control btn-export" onclick="exportToExcel()">Ekspor Excel</button>
                     <button class="btn-control" onclick="undoArrow()">Undo</button>
                     <button class="btn-control btn-clear" onclick="resetScore()">Reset Semua</button>
                 </div>
