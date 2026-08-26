@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Skoring Panahan Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Tambahan CDN Chart.js untuk membuat grafik -->
+    <script src="https://jsdelivr.net"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Skoring Panahan Pro</h1>
+
+        <!-- 1. Fitur Timer Menembak -->
+        <div class="timer-section">
+            <div class="timer-controls">
+                Waktu: 
+                <button onclick="setTimer(120)">2 Menit</button>
+                <button onclick="setTimer(240)">4 Menit</button>
+            </div>
+            <div class="timer-display" id="timer-display">02:00</div>
+            <div class="timer-controls">
+                <button id="btn-start" onclick="toggleTimer()" style="background: #2ed573;">Mulai</button>
+                <button onclick="resetTimer()" style="background: #ea2027;">Reset Waktu</button>
+            </div>
+        </div>
+
+        <!-- 2. Dashboard Poin Utama -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="total-score">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="current-end-num">1</div>
+                <div class="stat-label">Rambahan</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="count-10">0</div>
+                <div class="stat-label">10+X</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="count-x">0</div>
+                <div class="stat-label">X</div>
+            </div>
+        </div>
+
+        <!-- Opsi Jumlah Anak Panah per Rambahan -->
+        <div class="end-settings">
+            <label>Anak panah per Rambahan (End):</label>
+            <select id="arrows-per-end" onchange="resetScore()">
+                <option value="3">3 Anak Panah</option>
+                <option value="6" selected>6 Anak Panah</option>
+            </select>
+        </div>
+
+        <!-- 3. Tombol Input Skor -->
+        <div class="target-buttons">
+            <button class="btn-score btn-x" onclick="addArrow('X', 10)">X</button>
+            <button class="btn-score btn-10" onclick="addArrow('10', 10)">10</button>
+            <button class="btn-score btn-9" onclick="addArrow('9', 9)">9</button>
+            <button class="btn-score btn-8" onclick="addArrow('8', 8)">8</button>
+            <button class="btn-score btn-7" onclick="addArrow('7', 7)">7</button>
+            <button class="btn-score btn-6" onclick="addArrow('6', 6)">6</button>
+            <button class="btn-score btn-5" onclick="addArrow('5', 5)">5</button>
+            <button class="btn-score btn-4" onclick="addArrow('4', 4)">4</button>
+            <button class="btn-score btn-3" onclick="addArrow('3', 3)">3</button>
+            <button class="btn-score btn-2" onclick="addArrow('2', 2)">2</button>
+            <button class="btn-score btn-1" onclick="addArrow('1', 1)">1</button>
+            <button class="btn-score btn-m" onclick="addArrow('M', 0)">M</button>
+        </div>
+
+        <!-- Fitur Tambahan: Grafik Perkembangan -->
+        <div class="chart-section">
+            <h3>Grafik Perkembangan Skor</h3>
+            <canvas id="scoreChart"></canvas>
+        </div>
+
+        <!-- 4. Struktur Catatan Per Rambahan (Ends) -->
+        <div class="history-section">
+            <div class="history-header">
+                <h3>Riwayat Rambahan</h3>
+                <div>
+                    <button class="btn-control btn-export" onclick="exportToExcel()">Ekspor Excel</button>
+                    <button class="btn-control" onclick="undoArrow()">Undo</button>
+                    <button class="btn-control btn-clear" onclick="resetScore()">Reset Semua</button>
+                </div>
+            </div>
+            <div id="ends-container">
+                <!-- Data per rambahan dimasukkan via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
