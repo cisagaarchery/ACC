@@ -51,7 +51,7 @@ function undoArrow() {
 }
 
 function resetScore() {
-    if (confirm("Apakah Anda yakin ingin menghapus semua data skor dan riwayat?")) {
+    if (confirm("")) {
         historyEnds = [];
         currentEndArrows = [];
         updateUI();
