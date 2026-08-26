@@ -197,44 +197,7 @@ function updateChart() {
     scoreChart.update();
 }
 
-// --- EKSPOR DATA KE EXCEL (CSV FORMAT) ---
-function exportToExcel() {
-    if (historyEnds.length === 0) {
-        alert("Belum ada data rambahan yang selesai untuk diekspor!");
-        return;
-    }
 
-    const limit = getArrowsLimit();
-    let csvContent = "data:text/csv;charset=utf-8,";
-    
-    let headers = "Rambahan";
-    for(let i = 1; i <= limit; i++) {
-        headers += `,Panah ${i}`;
-    }
-    headers += ",Total Rambahan\n";
-    csvContent += headers;
-
-    historyEnds.forEach((end, index) => {
-        let row = `Rambahan ${index + 1}`;
-        let endTotal = 0;
-        
-        end.forEach(arrow => {
-            row += `,${arrow.label}`;
-            endTotal += arrow.value;
-        });
-        
-        row += `,${endTotal}\n`;
-        csvContent += row;
-    });
-
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "Hasil_Skoring_Panahan.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
 
 // --- LOGIKA PENGATURAN WAKTU (TIMER) ---
 function setTimer(seconds) {
