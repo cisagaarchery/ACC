@@ -11,15 +11,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Skoring Panahan</h1>
+        <h3>Skoring Panahan</h3>
 
         <!-- 1. Fitur Timer Menembak -->
         <div class="timer-section">
             <div class="timer-controls">
                 Waktu:
-                <button onclick="setTimer(60)">1 Menit</button>
-                <button onclick="setTimer(120)">2 Menit</button>
-                <button onclick="setTimer(240)">4 Menit</button>
+                <button onclick="setTimer(60)">60 detik</button>
+                <button onclick="setTimer(120)">120 detik</button>
+                <button onclick="setTimer(240)">240 detik</button>
             </div>
             <div class="timer-display" id="timer-display">02:00</div>
             <div class="timer-controls">
@@ -55,7 +55,7 @@
             <select id="arrows-per-end" onchange="resetScore()">
                 <option value="3">3 Anak Panah</option>
                 <option value="6" selected>6 Anak Panah</option>
-                <option value="6" selected>9 Anak Panah</option>
+                <option value="9" selected>9 Anak Panah</option>
             </select>
         </div>
 
